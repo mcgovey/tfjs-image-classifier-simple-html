@@ -2,10 +2,11 @@ let net;
 const webcamElement = document.getElementById('webcam');
 
 async function app() {
-  console.log('Loading mobilenet..');
+  console.log('Loading model..');
 
   // Load the model.
-  net = await mobilenet.load();
+  // net = await mobilenet.load();
+  const net = await tf.automl.loadImageClassification('model.json');
   console.log('Successfully loaded model');
   
   // Create an object from Tensorflow.js data API which could capture image 
@@ -15,7 +16,7 @@ async function app() {
     const img = await webcam.capture();
     const result = await net.classify(img);
 
-    document.getElementById('console').innerText = `
+    document.getElementById('imageUploaded').innerText = `
       prediction: ${result[0].className}\n
       probability: ${result[0].probability}
     `;
@@ -27,5 +28,20 @@ async function app() {
     await tf.nextFrame();
   }
 }
+
+// function readURL(input) {
+// 	if (input.files && input.files[0]) {
+// 			var reader = new FileReader();
+
+// 			reader.onload = function (e) {
+// 				img = document.getElementById('imageUploaded');
+// 				img.setAttribute('src', e.target.result);
+// 				img.width(250);
+// 				img.height(200);
+// 			};
+
+// 			reader.readAsDataURL(input.files[0]);
+// 	}
+// }
 
 app();

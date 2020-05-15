@@ -2,13 +2,17 @@
   <head>
     <!-- Load the latest version of TensorFlow.js -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script> -->    
+    <script src="https://unpkg.com/@tensorflow/tfjs-automl"></script>  
   </head>
   <body>
     <div id="console"></div>
     <!-- add video element -->
     <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
 
+
+		<!-- <input type='file' onchange="readURL(this);" />
+    <img id="imageUploaded" src="#" alt="your image" /> -->
     <!-- Load index.js after the content of the page -->
     <script src="index.js"></script>
   </body>
