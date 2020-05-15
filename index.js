@@ -16,7 +16,7 @@ async function app() {
     const img = await webcam.capture();
     const result = await net.classify(img);
 
-    document.getElementById('imageUploaded').innerText = `
+    document.getElementById('webcam').innerText = `
       prediction: ${result[0].className}\n
       probability: ${result[0].probability}
     `;
