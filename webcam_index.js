@@ -16,9 +16,10 @@ async function app() {
     const img = await webcam.capture();
     const result = await net.classify(img);
 
-    document.getElementById('webcam').innerText = `
-      prediction: ${result[0].className}\n
-      probability: ${result[0].probability}
+    // console.log(result);
+    document.getElementById('console').innerText = `
+      prediction: ${result[0].label}\n
+      probability: ${result[0].prob}
     `;
     // Dispose the tensor to release the memory.
     img.dispose();
@@ -28,20 +29,5 @@ async function app() {
     await tf.nextFrame();
   }
 }
-
-// function readURL(input) {
-// 	if (input.files && input.files[0]) {
-// 			var reader = new FileReader();
-
-// 			reader.onload = function (e) {
-// 				img = document.getElementById('imageUploaded');
-// 				img.setAttribute('src', e.target.result);
-// 				img.width(250);
-// 				img.height(200);
-// 			};
-
-// 			reader.readAsDataURL(input.files[0]);
-// 	}
-// }
 
 app();
